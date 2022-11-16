@@ -15,7 +15,7 @@ class QuotesControllerAPI extends Controller
      */
     public function index()
     {
-        return response()->json(quote::all());
+        return QuoteResource::collection(quote::paginate(10));
     }
 
     /**
