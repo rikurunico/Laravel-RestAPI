@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuoteRequest;
 use App\Http\Resources\QuoteResource;
 use App\Models\quote;
 use Illuminate\Http\Request;
@@ -24,9 +25,9 @@ class QuotesControllerAPI extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreQuoteRequest $request)
     {
-        //
+        return response()->json('hello');
     }
 
     /**
