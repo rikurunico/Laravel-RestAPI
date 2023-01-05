@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreQuoteRequest;
+use App\Http\Requests\UpdateQuoteRequest;
 use App\Http\Resources\QuoteResource;
-use App\Models\quote;
+use App\Models\Quote;
 use Illuminate\Http\Request;
 
 class QuotesControllerAPI extends Controller
@@ -16,7 +17,7 @@ class QuotesControllerAPI extends Controller
      */
     public function index()
     {
-        return QuoteResource::collection(quote::paginate(10));
+        return QuoteResource::collection(Quote::paginate(10));
     }
 
     /**
@@ -27,16 +28,16 @@ class QuotesControllerAPI extends Controller
      */
     public function store(StoreQuoteRequest $request)
     {
-        return response()->json('hello');
+        return new QuoteResource(Quote::create($request->validated()));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\quote  $quote
+     * @param  \App\Models\Quote  $Quote
      * @return \Illuminate\Http\Response
      */
-    public function show(quote $quote)
+    public function show(Quote $quote)
     {
         return new QuoteResource($quote);
     }
@@ -48,18 +49,18 @@ class QuotesControllerAPI extends Controller
      * @param  \App\Models\quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, quote $quote)
+    public function update(UpdateQuoteRequest $request, Quote $quote)
     {
-        //
+        return new QuoteResource(tap($quote)->update($request->validated()));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\quote  $quote
+     * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(quote $quote)
+    public function destroy(Quote $quote)
     {
         //
     }
