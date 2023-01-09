@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class QuotesTampilan extends Model
 {
-    protected $table = 'quote';
+    protected $table = 'quotes';
 
     protected $fillable = [
         'quote',

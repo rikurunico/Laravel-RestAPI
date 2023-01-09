@@ -46,7 +46,7 @@ class QuotesControllerAPI extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\quote  $quote
+     * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateQuoteRequest $request, Quote $quote)

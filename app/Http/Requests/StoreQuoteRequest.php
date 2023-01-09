@@ -24,7 +24,7 @@ class StoreQuoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'quote' => 'required|min:10|max:255',
+            'quote' => 'required|min:10|max:255|unique:quotes',
             'author' => 'required|min:3|max:255',
         ];
     }

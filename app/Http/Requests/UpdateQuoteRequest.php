@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateQuoteRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdateQuoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'quote' => 'required|min:10|max:255',
+            'quote' => 'required|min:10|max:255|' . Rule::unique('quotes')->ignore($this->quote),
             'author' => 'required|min:3|max:255',
         ];
     }
