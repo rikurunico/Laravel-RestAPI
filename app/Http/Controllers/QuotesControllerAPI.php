@@ -62,6 +62,8 @@ class QuotesControllerAPI extends Controller
      */
     public function destroy(Quote $quote)
     {
-        //
+        $quote->delete();
+
+        return response()->noContent();
     }
 }
